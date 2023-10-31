@@ -19,10 +19,6 @@ public class BoardEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Size(max = 100)
-    @NotBlank
     private String boardName;
-    @Size(max = 100)
-    @NotBlank
     private String status;
 }
