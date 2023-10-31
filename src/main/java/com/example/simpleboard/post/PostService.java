@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Service
 @RequiredArgsConstructor
 public class PostService {
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
 
     public PostEntity create(PostRequest postRequest) {
         var entity = PostEntity.builder()

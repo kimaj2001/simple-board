@@ -14,5 +14,5 @@ import javax.validation.constraints.NotBlank;
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class BoardRequest {
     @NotBlank
-    private String boradName;
+    private String boardName;
 }

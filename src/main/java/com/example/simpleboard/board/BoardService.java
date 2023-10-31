@@ -10,7 +10,7 @@ public class BoardService {
 
     public BoardEntity create(BoardRequest boardRequest) {
         var entity = BoardEntity.builder()
-                .boardName(boardRequest.getBoradName())
+                .boardName(boardRequest.getBoardName())
                 .status("REGISTERED")
                 .build();
 
