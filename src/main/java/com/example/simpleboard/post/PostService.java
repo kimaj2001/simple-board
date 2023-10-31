@@ -1,5 +1,6 @@
 package com.example.simpleboard.post;
 
+import com.example.simpleboard.reply.ReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostService {
     private final PostRepository postRepository;
+    private final ReplyService replyService;
 
     public PostEntity create(PostRequest postRequest) {
         var entity = PostEntity.builder()
@@ -41,6 +43,10 @@ public class PostService {
                         var format = "패스워드가 맞지 않습니다. %s vs %s";
                         throw new RuntimeException(String.format(format, it.getPassword(), postViewRequest.getPassword()));
                     }
+                    // 답변글도 같이 적용
+                    var replyList = replyService.findAllByPostId(it.getId());
+                    it.setReplyList(replyList);
+
                     return it;
                 })
                 .orElseThrow( () ->

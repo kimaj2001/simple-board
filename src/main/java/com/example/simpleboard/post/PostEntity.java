@@ -1,5 +1,6 @@
 package com.example.simpleboard.post;
 
+import com.example.simpleboard.reply.ReplyEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,6 +9,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "post")
 @Setter
@@ -28,4 +31,6 @@ public class PostEntity {
     @Column(columnDefinition = "TEXT")
     private String content;
     private LocalDateTime postedAt;
+    @Transient
+    private List<ReplyEntity> replyList = new ArrayList<>();
 }
